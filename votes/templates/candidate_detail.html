@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block head %}
+  candidate detail page
+{% endblock %}
+
+{% block body  %}
+  Candidate Lastname: {{ candidate.lastname }}<br />
+  Candidate Firstname: {{ candidate.firstname }}<br />
+  Position: {{ candidate.position }}<br />
+  Platform: {{ candidate.platform }}<br />
+  Vote Count: {{ candidate.candidates.all.count }} <br />
+
+  <br /><br />
+
+  <a href="{% url 'votes:candidate_update' candidate.id%}"><input type="submit" value="Update Candidate"></a>
+  <input type="submit" value="Vote Candidate">
+  <br />
+  <a href="{% url 'votes:index' %}"><input type="submit" value="Return to Index Page"></a>
+
+{% endblock %}

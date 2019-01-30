@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block head %}
+  create candidate
+{% endblock %}
+
+{% block body %}
+<form action="{% url 'votes:candidate_create' %}" method="POST">
+  {% csrf_token %}
+  {% for field in form %}
+    {{ field.errors }}
+    {{ field.label }} {{ field }} <br /><br />
+  {% endfor %}
+  <br /><br />
+  <a href="{% url 'votes:index' %}"><input type="submit" value="Return to Index Page"></a>
+  <input type="submit"  value="Create Candidate">
+</form>
+{% endblock %}

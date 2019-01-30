@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block head %}
+  list of candidates
+{% endblock %}
+
+{% block body %}
+  <ol>
+  <br />
+  {% for candidate in candidates %}
+  <li>
+
+  Candidate Name: <br />
+    Lastname: {{ candidate.lastname }} <br />
+    Firstname:{{ candidate.firstname }} <br />
+    Position: {{ candidate.position }} <br />
+    Vote Count: {{ candidate.candidates.all.count }} <br />
+
+    <a href="{% url 'votes:candidate_detail' candidate.id%}"><input type="submit" value="See Details"></a><br />
+
+    <br />
+  </li>
+  {% endfor %} <br />
+
+  <a href="{% url 'votes:candidate_create' %}"><input type="submit" value="Add a New Candidate"></a>
+  <a href="{% url 'votes:position_create' %}"><input type="submit" value="Add a New Position"></a>
+{% endblock %}
+  </ol>
